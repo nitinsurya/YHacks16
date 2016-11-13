@@ -1,0 +1,34 @@
+[{
+    "targeted_counts": "1000000",
+    "activity_type": "Mail Flyers",
+    "activity_date": "2016-01-01T00:00:00Z"
+}, {
+    "targeted_counts": "1000000",
+    "activity_type": "Email",
+    "activity_date": "2016-01-15T00:00:00Z"
+}, {
+    "targeted_counts": "1123000",
+    "activity_type": "Email",
+    "promocodes": "ACCOFF10",
+    "activity_date": "2016-02-25T00:00:00Z"
+}, {
+    "targeted_counts": "60000",
+    "activity_type": "Call",
+    "promocodes": "ACCOFF10",
+    "activity_date": "2016-02-29T00:00:00Z"
+}, {
+    "targeted_counts": "1190500",
+    "activity_type": "Email",
+    "promocodes": "FREESPOUSE",
+    "activity_date": "2016-06-01T00:00:00Z"
+}, {
+    "targeted_counts": "150000",
+    "activity_type": "Call",
+    "promocodes": "FREESPOUSE",
+    "activity_date": "2016-06-15T00:00:00Z"
+}, {
+    "targeted_counts": "200000",
+    "activity_type": "Mail Flyers",
+    "promocodes": "FINCON",
+    "activity_date": "2016-06-30T00:00:00Z"
+}]

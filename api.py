@@ -33,6 +33,12 @@ def app_content():
   #req = requests.get(url).json()
   return make_response(jsonify(out_vals))
 
+@app.route('/activities', methods=['GET'])
+def activities():
+  with open('activities_bkp.json') as data_file:
+    json_data = json.load(data_file)
+    return make_response(jsonify(json_data))
+
 @app.errorhandler(404)
 def not_found(error):
   return make_response(jsonify({'error': 'Not found'}), 404)

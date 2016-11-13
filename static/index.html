@@ -1,0 +1,332 @@
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Meta, title, CSS, favicons, etc. -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+	<title>Welcome | Intellisurance</title>
+
+	<link rel="stylesheet/less" type="text/css" href="css/reset.css" />
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet/less" type="text/css" href="css/style.less" />
+	<link rel="stylesheet/less" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" />
+	<link rel="stylesheet/less" type="text/css" href="css/sai.css" />
+	<style>
+        .tipsy{font-family: 'Open Sans', sans-serif; font-size:12px;position:absolute;padding:5px;word-wrap:break-word;z-index:100000}.tipsy-inner{background-color:#000;color:#FFF;max-width:200px;padding:5px 8px 4px;text-align:center;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}.tipsy-arrow{position:absolute;width:0;height:0;line-height:0;border:5px dashed #000}.tipsy-arrow-n{border-bottom-color:#000}.tipsy-arrow-s{border-top-color:#000}.tipsy-arrow-e{border-left-color:#000}.tipsy-arrow-w{border-right-color:#000}.tipsy-n .tipsy-arrow,.tipsy-nw .tipsy-arrow{border-left-color:transparent;border-right-color:transparent;top:0;border-bottom-style:solid;border-top:none}.tipsy-n .tipsy-arrow{left:50%;margin-left:-5px}.tipsy-nw .tipsy-arrow{left:10px}.tipsy-ne .tipsy-arrow{top:0;right:10px;border-bottom-style:solid;border-top:none;border-left-color:transparent;border-right-color:transparent}.tipsy-s .tipsy-arrow,.tipsy-se .tipsy-arrow,.tipsy-sw .tipsy-arrow{bottom:0;border-top-style:solid;border-bottom:none;border-left-color:transparent;border-right-color:transparent}.tipsy-s .tipsy-arrow{left:50%;margin-left:-5px}.tipsy-sw .tipsy-arrow{left:10px}.tipsy-se .tipsy-arrow{right:10px}.tipsy-e .tipsy-arrow,.tipsy-w .tipsy-arrow{top:50%;margin-top:-5px;border-top-color:transparent;border-bottom-color:transparent}.tipsy-e .tipsy-arrow{right:0;border-left-style:solid;border-right:none}.tipsy-w .tipsy-arrow{left:0;border-right-style:solid;border-left:none}
+    </style>
+
+	<script src="js/less.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<!--	<script src="js/bootstrap.js" type="text/javascript"></script>-->
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+
+
+	<!-- SUMANTH	-->
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.0/MarkerCluster.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.0/MarkerCluster.Default.css" />
+	<script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/leaflet.esri/1.0.4/esri-leaflet.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.5.0/leaflet.markercluster-src.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.3/jquery.tipsy.min.js" type="text/javascript"></script>
+	<script src="js/realdata.js"></script>
+
+
+</head>
+
+<body>
+	<div class="outer-wrapper">
+		<div class="left-sidebar">
+			<div class="logo"></div>
+			<div class="message">Welcome! Here you can combine data from: <span onclick="check(this.id, checkjson)" class="clearall" id="all" value="All">Clear All</span></div>
+			<ul class="main-menu">
+				<li>
+					<div class="type">Insurance type</div>
+					<div class="choices">
+						<div class="option50">
+							<label><input type="checkbox" name="insurance" onclick="check(this.id, checkjson)" id="from_dental"/> Dental</label>
+						</div>
+						<div class="option50">
+							<label><input type="checkbox" name="insurance" onclick="check(this.id, checkjson)" id="other_source"/> Other</label>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="type">Gender</div>
+					<div class="choices">
+						<div class="option50">
+							<label><input type="checkbox" name="gender" onclick="check(this.id, checkjson)" id="male"/> Male</label>
+						</div>
+						<div class="option50">
+							<label><input type="checkbox" name="gender" onclick="check(this.id, checkjson)" id="female"/> Female</label>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="type">State</div>
+					<div class="choices">
+						<select size="1" id="state_form" onchange="check(this.value, checkjson)">
+							<option value="all_locations">All States</option>
+							<option value="AL">Alabama</option>
+							<option value="AK">Alaska</option>
+							<option value="AZ">Arizona</option>
+							<option value="AR">Arkansas</option>
+							<option value="CA">California</option>
+							<option value="CO">Colorado</option>
+							<option value="CT">Connecticut</option>
+							<option value="DE">Delaware</option>
+							<option value="DC">Dist of Columbia</option>
+							<option value="FL">Florida</option>
+							<option value="GA">Georgia</option>
+							<option value="HI">Hawaii</option>
+							<option value="ID">Idaho</option>
+							<option value="IL">Illinois</option>
+							<option value="IN">Indiana</option>
+							<option value="IA">Iowa</option>
+							<option value="KS">Kansas</option>
+							<option value="KY">Kentucky</option>
+							<option value="LA">Louisiana</option>
+							<option value="ME">Maine</option>
+							<option value="MD">Maryland</option>
+							<option value="MA">Massachusetts</option>
+							<option value="MI">Michigan</option>
+							<option value="MN">Minnesota</option>
+							<option value="MS">Mississippi</option>
+							<option value="MO">Missouri</option>
+							<option value="MT">Montana</option>
+							<option value="NE">Nebraska</option>
+							<option value="NV">Nevada</option>
+							<option value="NH">New Hampshire</option>
+							<option value="NJ">New Jersey</option>
+							<option value="NM">New Mexico</option>
+							<option value="NY">New York</option>
+							<option value="NC">North Carolina</option>
+							<option value="ND">North Dakota</option>
+							<option value="OH">Ohio</option>
+							<option value="OK">Oklahoma</option>
+							<option value="OR">Oregon</option>
+							<option value="PA">Pennsylvania</option>
+							<option value="RI">Rhode Island</option>
+							<option value="SC">South Carolina</option>
+							<option value="SD">South Dakota</option>
+							<option value="TN">Tennessee</option>
+							<option value="TX">Texas</option>
+							<option value="UT">Utah</option>
+							<option value="VT">Vermont</option>
+							<option value="VA">Virginia</option>
+							<option value="WA">Washington</option>
+							<option value="WV">West Virginia</option>
+							<option value="WI">Wisconsin</option>
+							<option value="WY">Wyoming</option>
+						</select>
+					</div>
+				</li>
+				<li>
+					<div class="type">Age</div>
+					<div class="choices">
+						<div class="option25">
+							<label><input type="checkbox" name="age" onclick="check(this.id, checkjson)" id="first20"/> 0-20</label>
+						</div>
+						<div class="option25">
+							<label><input type="checkbox" name="age" onclick="check(this.id, checkjson)" id="second20"/> 21-40</label>
+						</div>
+						<div class="option25">
+							<label><input type="checkbox" name="age" onclick="check(this.id, checkjson)" id="third20"/> 41-60</label>
+						</div>
+						<div class="option25">
+							<label><input type="checkbox" name="age" onclick="check(this.id, checkjson)" id="fourth20"/> 60+</label>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="type">Marital Status</div>
+					<div class="choices">
+						<div class="option50">
+							<label><input type="checkbox" name="marital" onclick="check(this.id, checkjson)" id="single"/> Single</label>
+						</div>
+						<div class="option50">
+							<label><input type="checkbox" name="marital" onclick="check(this.id, checkjson)" id="married"/> Married</label>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="type">Promo code</div>
+					<div class="choices">
+						<select name="promo_form" size="1" onchange="check(this.value, checkjson)" id="promo_form">
+							<option value="all_promo">All Promo Codes</option>
+							<option value="FREESPOUSE">FREESPOUSE</option>
+							<option value="FINCON">FINCON</option>
+							<option value="ACCOFF10">ACCOFF10</option>
+						</select>
+					</div>
+				</li>
+				<li>
+					<div class="type">Campaign Initiatives</div>
+					<div class="choices">
+						<select name="campaign_form" size="1" onchange="lastfilter(this.value)" id="campaign_form">
+							<option value="0">All Campaigns</option>
+							<option value="1">Accident Policy now available (via Mail Flyers on 01/01/2016)</option>
+							<option value="2">New Product Offering Splash (via Email on 01/15/2016)</option>
+							<option value="3">10% Discount on Premiums (via Email on 02/25/2016)</option>
+							<option value="4">10% Discount on Premiums (via Call on 02/29/2016)</option>
+							<option value="5">Free spouse coverage for 1 year (via Email on 06/01/2016)</option>
+							<option value="6">Free spouse coverage for 1 year (via Call on 06/15/2016)</option>
+							<option value="7">Free Financial Consulting (via Mail Flyers on 06/30/2016)</option>
+						</select>
+					</div>
+				</li>
+				<!--				<li><button class="submit">SUBMIT</button></li>-->
+			</ul>
+		</div>
+		<div class="map">
+			<div id="map"></div>
+			<div class="layer-button"></div>
+			<div class="layers-expand">
+				<label><input type="radio" name="basemaps" onclick="changeBasemap(this)"  value="DarkGray" />&nbsp;&nbsp;Dark Gray</label>
+    			<label><input type="radio" name="basemaps" onclick="changeBasemap(this)"  value="Topographic" />&nbsp;&nbsp;Topographic</label>
+				<label><input type="radio" name="basemaps" onclick="changeBasemap(this)"  value="Streets" />&nbsp;&nbsp;Streets</label>
+    			<label><input type="radio" name="basemaps" onclick="changeBasemap(this)"  value="NationalGeographic" />&nbsp;&nbsp;National Geographic</label>
+				<label><input type="radio" name="basemaps" onclick="changeBasemap(this)"  value="Oceans" />&nbsp;&nbsp;Oceans</label>
+    			<label><input type="radio" name="basemaps" onclick="changeBasemap(this)"  value="Gray" />&nbsp;&nbsp;Gray</label>
+				<label><input type="radio" name="basemaps" onclick="changeBasemap(this)"  value="Imagery" />&nbsp;&nbsp;Imagery</label>
+    			<label><input type="radio" name="basemaps" onclick="changeBasemap(this)"  value="ShadedRelief" />&nbsp;&nbsp;Shaded Relief</label>	
+			</div>
+<!--
+			<div id="basemaps-wrapper" class="leaflet-bar">
+				<select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)">
+					<option value="DarkGray">Dark Gray</option>
+					<option value="Topographic">Topographic</option>
+					<option value="Streets">Streets</option>
+					<option value="NationalGeographic">National Geographic</option>
+					<option value="Oceans">Oceans</option>
+					<option value="Gray">Gray</option>
+					<option value="Imagery">Imagery</option>
+					<option value="ShadedRelief">Shaded Relief</option>
+			 	</select>
+			</div>
+-->
+		</div>
+		<button class="material-design-hamburger__icon">
+			<span class="material-design-hamburger__layer material-design-hamburger__icon--from-arrow"></span>
+		</button>
+		<div class="graphs" id="graphs">
+			<div class="expand" id="expand"></div>
+			<div class="row">
+				<div class="graph-unit col-xs-6 col-md-4" id="typeDiv">
+					<div class="heading">Insurance Type Statistics</div>
+					<div class="oneliner">This pie chart shows you the graph of people who have taken Dental insurance vs other.</div>
+					<div id="insurancepieDiv" class="graph-inner">
+						<canvas id="insurancepieCanvas" width=240 height=240></canvas>
+					</div>
+				</div>
+				<div class="graph-unit col-xs-6 col-md-4" id="genderDiv">
+					<div class="heading">Gender Statistics</div>
+					<div class="oneliner">The number of males vs females who have taken insurance can be seen from this piechart.</div>
+					<div id="genderpieDiv" class="graph-inner">
+						<canvas id="genderpieCanvas" width=240 height=240></canvas>
+					</div>
+				</div>
+				<div class="graph-unit col-xs-6 col-md-4" id="ageDiv">
+					<div class="heading">Age Range Statistics</div>
+					<div class="oneliner">This bar graph shows you the age range of the people who have insurance.</div>
+					<div id="agebarDiv" class="graph-inner">
+						<svg id="agebarsvg" width=480 height=500></svg>
+					</div>
+				</div>
+				<div class="graph-unit col-xs-6 col-md-4" id="maritalDiv">
+					<div class="heading">Marital Status Statistics</div>
+					<div class="oneliner">Data about single vs married individuals can bee seen in this piechart.</div>
+					<div id="maritalpieDiv" class="graph-inner">
+						<canvas id="maritalpieCanvas" width=240 height=240></canvas>
+					</div>
+				</div>
+				<div class="graph-unit col-xs-6 col-md-4" id="promoDiv">
+					<div class="heading">Promotional Codes Statistics</div>
+					<div class="oneliner">The promotional codes used and how they stack up against one another are shown here.</div>
+					<div id="promobarDiv" class="graph-inner">
+						<svg id="promobarsvg" width=240 height=500></svg>
+					</div>
+				</div>
+				<div class="graph-unit col-xs-6 col-md-4" id="promoDiv">
+					<div class="heading">Campaign Statistics</div>
+					<div class="oneliner">Check out which campaign made the most impact. Hover on the dots to reveal more info.</div>
+					<div class="graph-inner">
+						<svg id="linegraphsvg" width=240 height=240></svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/ui.js" type="text/javascript"></script>
+<!--	<script src="js/main.js" type="text/javascript"></script>-->
+	<script>
+		var map = L.map('map', {
+			center: [34.746905, -92.280049],
+			zoom: 3
+		});
+		var layer = L.esri.basemapLayer('DarkGray').addTo(map);
+		var layerLabels;
+
+		function setBasemap(basemap) {
+			if (layer) {
+				map.removeLayer(layer);
+			}
+
+			layer = L.esri.basemapLayer(basemap);
+
+			map.addLayer(layer);
+
+			if (layerLabels) {
+				map.removeLayer(layerLabels);
+			}
+
+			if (basemap === 'ShadedRelief' ||
+				basemap === 'Oceans' ||
+				basemap === 'Gray' ||
+				basemap === 'DarkGray' ||
+				basemap === 'Imagery' ||
+				basemap === 'Terrain'
+			) {
+				layerLabels = L.esri.basemapLayer(basemap + 'Labels');
+				map.addLayer(layerLabels);
+			}
+		}
+		function changeBasemap(basemaps){
+		   var basemap = basemaps.value;
+		   setBasemap(basemap);
+		 }
+	</script>
+	<script type="text/javascript">
+		var checkjson = {
+			"all": true,
+			"from_dental": false,
+			"other_source": false,
+			"male": false,
+			"female": false,
+			"all_locations": true,
+			"state": false,
+			"first20": false,
+			"second20": false,
+			"third20": false,
+			"fourth20": false,
+			"single": false,
+			"married": false,
+			"all_promo": true,
+			"promo_name": false
+		};
+	</script>
+	<script src="js/data.js" type="text/javascript"></script>
+	<script src="js/main.js" type="text/javascript"></script>
+	<script src="js/piechart.js" type="text/javascript"></script>
+	<script src="js/barchart.js" type="text/javascript"></script>
+	<script src="js/drawcharts.js" type="text/javascript"></script>
+	<script src="js/smoothedline.js" type="text/javascript"></script>
+</body>
+
+</html>
